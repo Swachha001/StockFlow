@@ -1,0 +1,10 @@
+# StockFlow database settings — TEMPLATE.
+# 1) Copy this file to  db.properties  (same folder as pom.xml).  db.properties is git-ignored.
+# 2) Put the password of the MySQL application user created by database/04_create_app_user.sql.
+# Do NOT use the MySQL root account here.
+#
+# The session time zone is pinned to Bangladesh time (+06:00, no DST) so "today" and the
+# timestamps on screen are correct even if the MySQL server itself runs in another time zone.
+db.url=jdbc:mysql://localhost:3306/stockflow_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Dhaka&characterEncoding=UTF-8&sessionVariables=time_zone='%2B06:00'
+db.user=stockflow_app
+db.password=CHANGE_ME
