@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.stockflow.controller.PurchasesController" styleClass="page" spacing="14">
+    <VBox>
+        <Label text="Purchases" styleClass="page-title"/>
+        <Label text="Receive stock from suppliers — stock increases automatically" styleClass="page-subtitle"/>
+    </VBox>
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <Tab text="New Purchase">
+            <!-- ScrollPane = safety net for very small windows; normally the BorderPane simply fills the tab
+                 so the action row (bottom) is always pinned at the bottom edge and the table (center) shrinks. -->
+            <ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" styleClass="tab-scroll">
+                <BorderPane styleClass="tab-body">
+                    <top>
+                        <VBox spacing="12">
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Supplier *" styleClass="form-label" minWidth="80"/>
+                                <ComboBox fx:id="supplierBox" prefWidth="340" promptText="Select supplier"/>
+                                <Label text="Note" styleClass="form-label"/>
+                                <TextField fx:id="noteField" HBox.hgrow="ALWAYS" promptText="Optional (invoice no., remarks)"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Product *" styleClass="form-label" minWidth="80"/>
+                                <HBox fx:id="pickerHolder" HBox.hgrow="ALWAYS"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Region minWidth="80" prefWidth="80"/>
+                                <Label text="Qty" styleClass="form-label" minWidth="-Infinity"/>
+                                <TextField fx:id="qtyField" prefWidth="90" minWidth="70" text="1" onAction="#onAddItem"/>
+                                <Label text="Unit cost ৳" styleClass="form-label" minWidth="-Infinity"/>
+                                <TextField fx:id="costField" prefWidth="130" minWidth="110" onAction="#onAddItem"/>
+                                <Button text="+ Add Item" styleClass="btn-secondary" minWidth="-Infinity" onAction="#onAddItem"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+                    <center>
+                        <TableView fx:id="itemsTable" minHeight="120" BorderPane.alignment="CENTER">
+                            <BorderPane.margin><Insets top="12" bottom="12"/></BorderPane.margin>
+                        </TableView>
+                    </center>
+                    <bottom>
+                        <HBox fx:id="actionRow" spacing="12" alignment="CENTER_RIGHT" minHeight="40">
+                            <Label text="Total:" styleClass="total-caption"/>
+                            <Label fx:id="totalLabel" styleClass="total-value"/>
+                            <Button fx:id="clearButton" text="Clear" styleClass="btn-secondary" onAction="#onClear"/>
+                            <Button fx:id="confirmButton" text="✔ Confirm Purchase" styleClass="btn-primary" onAction="#onConfirm"/>
+                        </HBox>
+                    </bottom>
+                </BorderPane>
+            </ScrollPane>
+        </Tab>
+        <Tab text="Purchase History">
+            <VBox spacing="12" styleClass="tab-body">
+                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="toolbar">
+                    <TextField fx:id="historySearch" promptText="Search by purchase no., supplier or date (dd-MM-yyyy)" HBox.hgrow="ALWAYS"/>
+                    <Label text="From"/>
+                    <DatePicker fx:id="fromDate" prefWidth="140"/>
+                    <Label text="To"/>
+                    <DatePicker fx:id="toDate" prefWidth="140"/>
+                    <Button text="Clear dates" styleClass="btn-secondary" onAction="#onClearDates"/>
+                </HBox>
+                <TableView fx:id="historyTable" VBox.vgrow="ALWAYS"/>
+                <Label fx:id="historyCount" styleClass="muted"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

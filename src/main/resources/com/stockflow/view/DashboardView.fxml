@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.stockflow.controller.DashboardController" fitToWidth="true" styleClass="page-scroll">
+    <VBox styleClass="page" spacing="16">
+        <HBox alignment="CENTER_LEFT">
+            <VBox>
+                <Label text="Dashboard" styleClass="page-title"/>
+                <Label text="Today's business at a glance" styleClass="page-subtitle"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="⟳ Refresh" styleClass="btn-secondary" onAction="#refresh"/>
+        </HBox>
+        <FlowPane fx:id="cards" hgap="14" vgap="14"/>
+        <HBox spacing="16">
+            <VBox styleClass="panel" HBox.hgrow="ALWAYS" prefWidth="440">
+                <Label text="Sales — Last 7 Days" styleClass="panel-title"/>
+                <BarChart fx:id="salesChart" legendVisible="false" animated="false" prefHeight="280" categoryGap="18">
+                    <xAxis><CategoryAxis/></xAxis>
+                    <yAxis><NumberAxis/></yAxis>
+                </BarChart>
+            </VBox>
+            <VBox styleClass="panel" HBox.hgrow="ALWAYS" prefWidth="620">
+                <Label text="⚠ Low Stock Products" styleClass="panel-title"/>
+                <TableView fx:id="lowStockTable" prefHeight="280"/>
+            </VBox>
+        </HBox>
+        <VBox styleClass="panel">
+            <Label text="Recent Transactions" styleClass="panel-title"/>
+            <TableView fx:id="recentTable" prefHeight="300"/>
+        </VBox>
+    </VBox>
+</ScrollPane>

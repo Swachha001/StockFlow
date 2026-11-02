@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.stockflow.controller.SalesController" styleClass="page" spacing="14">
+    <VBox>
+        <Label text="Sales" styleClass="page-title"/>
+        <Label text="Create invoices — stock decreases automatically" styleClass="page-subtitle"/>
+    </VBox>
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <Tab text="New Sale">
+            <ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" styleClass="tab-scroll">
+                <BorderPane styleClass="tab-body">
+                    <top>
+                        <VBox spacing="12">
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Customer" styleClass="form-label" minWidth="80"/>
+                                <ComboBox fx:id="customerBox" prefWidth="340"/>
+                                <Button fx:id="newCustomerButton" text="+ New Customer" styleClass="btn-secondary" onAction="#onNewCustomer"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Product *" styleClass="form-label" minWidth="80"/>
+                                <HBox fx:id="pickerHolder" HBox.hgrow="ALWAYS"/>
+                                <Label text="Qty" styleClass="form-label" minWidth="-Infinity"/>
+                                <TextField fx:id="qtyField" prefWidth="80" minWidth="70" text="1" onAction="#onAddItem"/>
+                                <Button text="+ Add to Cart" styleClass="btn-secondary" minWidth="-Infinity" onAction="#onAddItem"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+                    <center>
+                        <TableView fx:id="cartTable" minHeight="120" BorderPane.alignment="CENTER">
+                            <BorderPane.margin><Insets top="12" bottom="12"/></BorderPane.margin>
+                        </TableView>
+                    </center>
+                    <bottom>
+                        <HBox fx:id="actionRow" spacing="12" alignment="CENTER_RIGHT" minHeight="40">
+                            <Label text="Total:" styleClass="total-caption"/>
+                            <Label fx:id="totalLabel" styleClass="total-value"/>
+                            <Button text="Clear Cart" styleClass="btn-secondary" onAction="#onClear"/>
+                            <Button fx:id="completeButton" text="✔ Complete Sale" styleClass="btn-primary" onAction="#onComplete"/>
+                        </HBox>
+                    </bottom>
+                </BorderPane>
+            </ScrollPane>
+        </Tab>
+        <Tab text="Sales History">
+            <VBox spacing="12" styleClass="tab-body">
+                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="toolbar">
+                    <TextField fx:id="historySearch" promptText="Search by invoice no., customer or date (dd-MM-yyyy)" HBox.hgrow="ALWAYS"/>
+                    <Label text="From"/>
+                    <DatePicker fx:id="fromDate" prefWidth="140"/>
+                    <Label text="To"/>
+                    <DatePicker fx:id="toDate" prefWidth="140"/>
+                    <Button text="Clear dates" styleClass="btn-secondary" onAction="#onClearDates"/>
+                </HBox>
+                <TableView fx:id="historyTable" VBox.vgrow="ALWAYS"/>
+                <Label fx:id="historyCount" styleClass="muted"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

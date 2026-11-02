@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.stockflow.controller.LoginController" styleClass="login-root">
+    <VBox styleClass="login-brand" alignment="CENTER" spacing="12" prefWidth="400" minWidth="400">
+        <Label text="STOCKFLOW" styleClass="brand-title"/>
+        <Label text="Smart Retail Inventory &amp; Store Management System" styleClass="brand-subtitle" wrapText="true"
+               textAlignment="CENTER"/>
+        <Label text="Products · Purchases · Sales · Reports" styleClass="brand-tagline"/>
+    </VBox>
+    <VBox alignment="CENTER" HBox.hgrow="ALWAYS" styleClass="login-form-side">
+        <VBox spacing="12" maxWidth="340" alignment="CENTER_LEFT">
+            <Label text="Welcome back" styleClass="login-heading"/>
+            <Label text="Sign in to continue" styleClass="muted"/>
+            <Label text="Username" styleClass="form-label"/>
+            <TextField fx:id="usernameField" promptText="Enter username" onAction="#onLogin"/>
+            <Label text="Password" styleClass="form-label"/>
+            <PasswordField fx:id="passwordField" promptText="Enter password" onAction="#onLogin"/>
+            <CheckBox fx:id="rememberMe" text="Remember me"/>
+            <Label fx:id="errorLabel" styleClass="form-error" wrapText="true" visible="false" managed="false"/>
+            <Button fx:id="loginButton" text="Login" onAction="#onLogin" styleClass="btn-primary" maxWidth="Infinity"
+                    defaultButton="true"/>
+            <Label text="Inventory &amp; Store Management System" styleClass="muted" alignment="CENTER" maxWidth="Infinity"/>
+        </VBox>
+    </VBox>
+</HBox>

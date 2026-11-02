@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.stockflow.controller.ReportsController" styleClass="page" spacing="14">
+    <VBox>
+        <Label text="Reports" styleClass="page-title"/>
+        <Label text="Sales, purchases, inventory and profit summaries" styleClass="page-subtitle"/>
+    </VBox>
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="toolbar">
+        <Label text="Period" styleClass="form-label"/>
+        <ComboBox fx:id="rangeBox" prefWidth="160"/>
+        <Label text="From"/>
+        <DatePicker fx:id="fromDate" prefWidth="140"/>
+        <Label text="To"/>
+        <DatePicker fx:id="toDate" prefWidth="140"/>
+        <Button text="Generate" styleClass="btn-primary" onAction="#onGenerate"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="periodLabel" styleClass="muted"/>
+    </HBox>
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <Tab text="Sales">
+            <VBox spacing="12" styleClass="tab-body">
+                <HBox spacing="14">
+                    <VBox styleClass="card,card-green" prefWidth="260"><Label text="Number of Sales" styleClass="card-title"/><Label fx:id="salesCount" styleClass="card-value"/></VBox>
+                    <VBox styleClass="card,card-green" prefWidth="260"><Label text="Total Sales (Revenue)" styleClass="card-title"/><Label fx:id="salesRevenue" styleClass="card-value"/></VBox>
+                </HBox>
+                <Label text="Top Selling Products" styleClass="panel-title"/>
+                <TableView fx:id="topTable" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </Tab>
+        <Tab text="Purchases">
+            <VBox spacing="12" styleClass="tab-body">
+                <HBox spacing="14">
+                    <VBox styleClass="card,card-blue" prefWidth="260"><Label text="Number of Purchases" styleClass="card-title"/><Label fx:id="purchCount" styleClass="card-value"/></VBox>
+                    <VBox styleClass="card,card-blue" prefWidth="260"><Label text="Total Purchased" styleClass="card-title"/><Label fx:id="purchTotal" styleClass="card-value"/></VBox>
+                </HBox>
+                <Label text="Purchases by Supplier" styleClass="panel-title"/>
+                <TableView fx:id="supplierTable" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </Tab>
+        <Tab text="Inventory">
+            <VBox spacing="12" styleClass="tab-body">
+                <HBox spacing="14">
+                    <VBox styleClass="card,card-blue" prefWidth="230"><Label text="Active Products" styleClass="card-title"/><Label fx:id="invProducts" styleClass="card-value"/></VBox>
+                    <VBox styleClass="card,card-blue" prefWidth="230"><Label text="Total Units" styleClass="card-title"/><Label fx:id="invUnits" styleClass="card-value"/></VBox>
+                    <VBox styleClass="card,card-blue" prefWidth="260"><Label text="Stock Value (cost)" styleClass="card-title"/><Label fx:id="invValue" styleClass="card-value"/></VBox>
+                    <VBox styleClass="card,card-amber" prefWidth="230"><Label text="Low Stock Items" styleClass="card-title"/><Label fx:id="invLow" styleClass="card-value"/></VBox>
+                </HBox>
+                <Label text="Current stock (not affected by the period above)" styleClass="muted"/>
+                <TableView fx:id="inventoryTable" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </Tab>
+        <Tab text="Profit">
+            <VBox spacing="12" styleClass="tab-body">
+                <HBox spacing="14">
+                    <VBox styleClass="card,card-green" prefWidth="250"><Label text="Revenue" styleClass="card-title"/><Label fx:id="profRevenue" styleClass="card-value"/></VBox>
+                    <VBox styleClass="card,card-amber" prefWidth="250"><Label text="Cost of Goods Sold" styleClass="card-title"/><Label fx:id="profCost" styleClass="card-value"/></VBox>
+                    <VBox styleClass="card,card-green" prefWidth="250"><Label text="Estimated Gross Profit" styleClass="card-title"/><Label fx:id="profProfit" styleClass="card-value"/></VBox>
+                    <VBox styleClass="card,card-blue" prefWidth="200"><Label text="Margin" styleClass="card-title"/><Label fx:id="profMargin" styleClass="card-value"/></VBox>
+                </HBox>
+                <Label text="Estimated profit = selling price minus the cost price recorded at the time of each sale." styleClass="muted" wrapText="true"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

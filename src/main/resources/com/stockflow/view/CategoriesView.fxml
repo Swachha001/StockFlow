@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.stockflow.controller.CategoriesController" styleClass="page" spacing="14">
+    <HBox alignment="CENTER_LEFT">
+        <VBox>
+            <Label text="Categories" styleClass="page-title"/>
+            <Label text="Group products for easier browsing and reporting" styleClass="page-subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="+ Add Category" styleClass="btn-primary" onAction="#onAdd"/>
+    </HBox>
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="toolbar">
+        <TextField fx:id="searchField" promptText="Search categories" HBox.hgrow="ALWAYS"/>
+        <CheckBox fx:id="showInactive" text="Show inactive"/>
+    </HBox>
+    <TableView fx:id="table" VBox.vgrow="ALWAYS"/>
+    <Label fx:id="countLabel" styleClass="muted"/>
+</VBox>

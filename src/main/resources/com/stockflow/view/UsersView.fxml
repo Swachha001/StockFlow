@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.stockflow.controller.UsersController" styleClass="page" spacing="14">
+    <HBox alignment="CENTER_LEFT">
+        <VBox>
+            <Label text="Users" styleClass="page-title"/>
+            <Label text="Accounts and roles (Administrator only)" styleClass="page-subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="+ Add User" styleClass="btn-primary" onAction="#onAdd"/>
+    </HBox>
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="toolbar">
+        <TextField fx:id="searchField" promptText="Search by username or name" HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <TableView fx:id="table" VBox.vgrow="ALWAYS"/>
+    <Label fx:id="countLabel" styleClass="muted"/>
+</VBox>
