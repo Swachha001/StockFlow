@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.stockflow.controller.MainController" styleClass="app-root">
+    <left>
+        <VBox fx:id="sidebar" styleClass="sidebar" prefWidth="230" minWidth="230"/>
+    </left>
+    <top>
+        <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="12">
+            <Label fx:id="welcomeLabel" styleClass="topbar-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="dateLabel" styleClass="muted"/>
+            <Label fx:id="userLabel" styleClass="user-chip"/>
+        </HBox>
+    </top>
+    <center>
+        <StackPane fx:id="content"/>
+    </center>
+</BorderPane>

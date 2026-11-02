@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.stockflow.controller.SettingsController" styleClass="page" spacing="16">
+    <VBox>
+        <Label text="Settings" styleClass="page-title"/>
+        <Label text="Your account and application information" styleClass="page-subtitle"/>
+    </VBox>
+    <HBox spacing="16" alignment="TOP_LEFT">
+        <VBox styleClass="panel" spacing="10" prefWidth="420">
+            <Label text="My Account" styleClass="panel-title"/>
+            <Label fx:id="accountLabel"/>
+            <Separator/>
+            <Label text="Change Password" styleClass="panel-title"/>
+            <Label text="Current password" styleClass="form-label"/>
+            <PasswordField fx:id="oldField"/>
+            <Label text="New password (min 6 characters)" styleClass="form-label"/>
+            <PasswordField fx:id="newField"/>
+            <Label text="Confirm new password" styleClass="form-label"/>
+            <PasswordField fx:id="confirmField"/>
+            <Label fx:id="messageLabel" wrapText="true" visible="false" managed="false"/>
+            <Button text="Update Password" styleClass="btn-primary" onAction="#onChangePassword"/>
+        </VBox>
+        <VBox styleClass="panel" spacing="10" prefWidth="420">
+            <Label text="About StockFlow" styleClass="panel-title"/>
+            <Label text="StockFlow — Smart Retail Inventory &amp; Store Management System"/>
+            <Label text="Version 1.0.0"/>
+            <Label text="Java · JavaFX · MySQL · JDBC" styleClass="muted"/>
+            <Label fx:id="dbLabel" styleClass="muted" wrapText="true"/>
+        </VBox>
+    </HBox>
+</VBox>
